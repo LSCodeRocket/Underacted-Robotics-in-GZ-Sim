@@ -31,7 +31,7 @@
             </link>
 
             <link name="arm_holder">
-                <xacro:basic_box pos="${(base_size_x+arm_holder_size)/2} 0 0" rot="${PI/2} 0 0" mass="0.1"
+                <xacro:basic_box pos="${(base_size_x+arm_holder_size_x)/2} 0 0" rot="${PI/2} 0 0" mass="0.1"
                 size_x="${(arm_holder_size_x + base_size_x)}" size_y="${arm_holder_size_y}" 
                 size_z="${arm_holder_size_z}" color="0.5 0 0.5 1"/>
             </link>
