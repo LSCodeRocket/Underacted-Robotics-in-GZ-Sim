@@ -2,9 +2,32 @@
 <sdf version="1.7" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:include filename="pendulum.xacro" />
     <world name='default'>
-        <include>
-            <uri>model://ground_plane</uri>
-        </include>
+        <model name="ground_plane">
+            <static>true</static>
+            <link name="link">
+                <collision name="collision">
+                <geometry>
+                    <plane>
+                    <normal>0 0 1</normal>
+                    </plane>
+                </geometry>
+                </collision>
+                <visual name="visual">
+                <geometry>
+                    <plane>
+                    <normal>0 0 1</normal>
+                    <size>100 100</size>
+                    </plane>
+                </geometry>
+                <material>
+                    <ambient>0.8 0.8 0.8 1</ambient>
+                    <diffuse>0.8 0.8 0.8 1</diffuse>
+                    <specular>0.8 0.8 0.8 1</specular>
+                </material>
+                </visual>
+            </link>
+        </model>
+
         <xacro:simple_pendulum x="0" y="0" z="2" theta_0="1.2" arm_length="1.0"/>
     </world>
 </sdf>
