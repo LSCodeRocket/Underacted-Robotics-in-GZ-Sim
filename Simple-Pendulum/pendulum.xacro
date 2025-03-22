@@ -43,7 +43,7 @@
             </link>
 
             <link name="bob">
-                <xacro:basic_solid_sphere pos="0 ${arm_holder_size_x + base_size_x} ${-arm_length}" rot="0 0 0"
+                <xacro:basic_solid_sphere pos="0 ${arm_holder_size_x + base_size_x} 0" rot="0 0 0"
                 radius="${bob_radius}" color="0 1 0 1" mass="10"/>
             </link>
 
@@ -52,6 +52,7 @@
                 <child>arm</child>
                 <axis>
                     <xyz>0 1 0</xyz>
+                    <pose>0 0 0 0 0 0</pose>
                     <limit>
                         <lower>-1e16</lower>
                         <upper>1e16</upper>
