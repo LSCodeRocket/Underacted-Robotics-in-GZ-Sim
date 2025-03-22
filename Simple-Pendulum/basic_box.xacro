@@ -37,4 +37,4 @@
             </geometry>
         </collision>
     </xacro:macro>
-</robot>
+</sdf>
