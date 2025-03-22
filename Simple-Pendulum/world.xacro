@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+    <world name='default'>
+        <xacro:include filename="simple_pendulum_model.xacro" />
+
+        <include>
+            <uri> model://ground_plane </uri>
+        </include>
+
+        <xacro:simple_pendulum x="0" y="0" z="2" roll="0" pitch="0" yaw="1.64"/>
+    </world>
+</sdf>

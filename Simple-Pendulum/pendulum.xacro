@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="arm_length" value="1.0" />
+    <xacro:property name="bob_radius" value="0.05" />
+    <xacro:property name="base_radius" value="0.05" />
+    <xacro:property name="arm_radius" value="0.01" />
+    <xacro:property name="arm_mass" value="0.1" />
+    <xacro:property name="bob_mass" value="0.5" />
+    <xacro:property name="base_radius" value="0.5" />
+
+    
+    <xacro:include filename="basic_sphere.xacro"/>
+    <xacro:include filename="basic_cylinder.xacro"/>
+
+    <xacro:macro name="simple_pendulum" params="x y z roll pitch yaw">
+        <model name="simple_pendulum">
+            <pose>${x} ${y} ${z} ${roll} ${pitch} ${yaw}</pose>
+
+            <link name="base_link"/>
+
+            <link name="arm">
+                <xacro:basic_cylinder pos="0 0 ${arm_length/2}"
+                    rot="0 0 0" mass="0.1" radius="${arm_radius}"
+                    length="${arm_length}" color="1 0 0 1"/>
+            </link>
+
+            <link name="bob">
+                <xacro:basic_sphere pos="0 0 ${arm_length}" rot="0 0 0"
+                radius="${bob_radius}" color="0 1 0 1"/>
+            </link>
+
+            <joint name="arm_joint" type="revolute">
+                <parent>base_link</parent>
+                <child>arm</child>
+                <axis>
+                    <xyz>0 1 0</xyz>
+                    <limit>
+                        <lower>-1e16</lower>
+                        <upper>1e16</upper>
+                    </limit>
+                </axis>
+                <pose>0 0 0 0 0 0</pose>
+            </joint>
+
+            <joint name="bob_joint" type="fixed">
+                <parent>arm</parent>
+                <child>bob</child>
+            </joint>
+        </model>
+    </xacro:macro>
+</robot>

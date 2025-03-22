@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="basic_box" params="pos rot mass size_x size_y size_z color">
+        <pose>${pos} ${rot}</pose>
+        <inertial>
+            <mass>${mass}</mass>
+            <inertia>
+                <ixx>${mass * (size_y * size_y + size_z * size_z)/12}</ixx>
+                <iyy>${mass * (size_z * size_z + size_x * size_x)/12}</iyy>
+                <izz>${mass * (size_y * size_y + size_x * size_x)/12}</izz>
+                <ixy>0</ixy> 
+                <ixz>0</ixz> 
+                <iyz>0</iyz>
+            </inertia>
+        </inertial>
+
+        <visual name="visual">
+            <geometry>
+                <box>
+                    <size>${size}</size>
+                </box>
+            </geometry>
+            
+            <material>
+                <ambient>${color}</ambient>
+                <diffuse>${color}</diffuse>
+                <specular>${color}</specular>
+                <emissive>${color}</emissive>
+            </material>
+        </visual>
+
+        <collision name="collision">
+            <geometry>
+                <box>
+                    <size>${size}</size>
+                </box>
+            </geometry>
+        </collision>
+    </xacro:macro>
+</robot>
