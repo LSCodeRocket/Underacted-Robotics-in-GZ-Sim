@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.7">
+    <xacro:include filename="simple_pendulum_model.xacro" />
     <world name='default'>
-        <xacro:include filename="simple_pendulum_model.xacro" />
 
         <include>
             <uri> model://ground_plane </uri>
