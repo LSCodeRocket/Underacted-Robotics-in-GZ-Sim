@@ -31,8 +31,8 @@
             </link>
 
             <link name="arm_holder">
-                <xacro:basic_box pos="${base_size_x} 0 0" rot="0 0 0" mass="0.1"
-                size_x="${arm_holder_size_x}" size_y="${arm_holder_size_y}" 
+                <xacro:basic_box pos="${(base_size_x+arm_holder_size)/2} 0 0" rot="${PI} 0 0" mass="0.1"
+                size_x="${(arm_holder_size_x + base_size_x)}" size_y="${arm_holder_size_y}" 
                 size_z="${arm_holder_size_z}" color="0.5 0 0.5 1"/>
             </link>
 
@@ -43,7 +43,7 @@
             </link>
 
             <link name="bob">
-                <xacro:basic_solid_sphere pos="${arm_holder_size_x + base_size_x} 0 ${-arm_length}" rot="0 0 0"
+                <xacro:basic_solid_sphere pos="0 ${arm_holder_size_x + base_size_x} ${-arm_length}" rot="0 0 0"
                 radius="${bob_radius}" color="0 1 0 1" mass="10"/>
             </link>
 
