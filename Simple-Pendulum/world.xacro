@@ -5,6 +5,6 @@
         <include>
             <uri>model://ground_plane</uri>
         </include>
-        <xacro:simple_pendulum x="0" y="0" z="2" roll="0" pitch="0" yaw="0"/>
+        <xacro:simple_pendulum x="0" y="0" z="2" theta_0="1.2" arm_length="1.0"/>
     </world>
 </sdf>
