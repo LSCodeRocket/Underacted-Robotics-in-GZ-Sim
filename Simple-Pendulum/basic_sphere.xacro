@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<sdf version="1.7" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:macro name="basic_hollow_sphere" params="pos rot mass radius color">
         <pose>${pos} ${rot}</pose>
         <inertial>

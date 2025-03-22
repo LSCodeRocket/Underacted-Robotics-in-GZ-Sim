@@ -1,14 +1,12 @@
 <?xml version="1.0" ?>
-<sdf version="1.7">
-    <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-        <xacro:include filename="pendulum.xacro" />
-        <world name='default'>
+<sdf version="1.7" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="pendulum.xacro" />
+    <world name='default'>
 
-            <include>
-                <uri> model://ground_plane </uri>
-            </include>
+        <include>
+            <uri> model://ground_plane </uri>
+        </include>
 
-            <xacro:simple_pendulum x="0" y="0" z="2" roll="0" pitch="0" yaw="1.64"/>
-        </world>
-    </robot>
+        <xacro:simple_pendulum x="0" y="0" z="2" roll="0" pitch="0" yaw="1.64"/>
+    </world>
 </sdf>
