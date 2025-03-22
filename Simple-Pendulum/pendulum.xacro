@@ -25,7 +25,6 @@
             <pose>${x} ${y} ${z + 0.01} 0 0 0</pose>
 
             <link name="base_link">
-                <static>true</static>
                 <xacro:basic_box pos="0 0 ${-z/2}" rot="0 0 0" mass="1000"
                 size_x="${base_size_x}" size_y="${base_size_y}" size_z="${z}"
                 color="0 0 1 1"/>
