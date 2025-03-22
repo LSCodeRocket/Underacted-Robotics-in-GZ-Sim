@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.7">
     <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-        <xacro:include filename="simple_pendulum_model.xacro" />
+        <xacro:include filename="pendulum.xacro" />
         <world name='default'>
 
             <include>

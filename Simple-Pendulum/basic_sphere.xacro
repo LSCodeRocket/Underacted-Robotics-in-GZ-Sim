@@ -3,14 +3,15 @@
     <xacro:macro name="basic_hollow_sphere" params="pos rot mass radius color">
         <pose>${pos} ${rot}</pose>
         <inertial>
-        <mass>${mass}</mass>
-        <inertia>
-            <ixx>${2 * mass * (radius * radius)/3}</ixx>
-            <iyy>${2 * mass * (radius * radius)/3}</iyy>
-            <izz>${2 * mass * (radius * radius)/3}</izz>
-            <ixy>0</ixy> 
-            <ixz>0</ixz> 
-            <iyz>0</iyz>
+            <mass>${mass}</mass>
+            <inertia>
+                <ixx>${2 * mass * (radius * radius)/3}</ixx>
+                <iyy>${2 * mass * (radius * radius)/3}</iyy>
+                <izz>${2 * mass * (radius * radius)/3}</izz>
+                <ixy>0</ixy> 
+                <ixz>0</ixz> 
+                <iyz>0</iyz>
+            </inertia>
         </inertial>
 
         <visual name="visual">
