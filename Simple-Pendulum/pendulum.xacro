@@ -27,7 +27,7 @@
 
             <link name="bob">
                 <xacro:basic_solid_sphere pos="0 0 ${arm_length}" rot="0 0 0"
-                radius="${bob_radius}" color="0 1 0 1"/>
+                radius="${bob_radius}" color="0 1 0 1" mass="10"/>
             </link>
 
             <joint name="arm_joint" type="revolute">
