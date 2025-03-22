@@ -32,7 +32,7 @@
         <collision name="collision">
             <geometry>
                 <box>
-                    <size>${size}</size>
+                    <size>${size_x} ${size_y} ${size_z} </size>
                 </box>
             </geometry>
         </collision>
