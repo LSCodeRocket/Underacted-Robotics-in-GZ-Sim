@@ -3,9 +3,9 @@
 
     <xacro:property name="PI" value="3.14159" />
 
-    <xacro:property name="bob_radius" value="0.05" />
+    <xacro:property name="bob_radius" value="0.1" />
     <xacro:property name="base_radius" value="0.05" />
-    <xacro:property name="arm_radius" value="0.01" />
+    <xacro:property name="arm_radius" value="0.03" />
     <xacro:property name="arm_mass" value="0.1" />
     <xacro:property name="bob_mass" value="0.5" />
     
@@ -31,28 +31,28 @@
             </link>
 
             <link name="arm_holder">
-                <xacro:basic_box pos="${(base_size_x+arm_holder_size_x)/2} 0 0" rot="${PI/2} 0 0" mass="0.1"
-                size_x="${(arm_holder_size_x + base_size_x)}" size_y="${arm_holder_size_y}" 
-                size_z="${arm_holder_size_z}" color="0.5 0 0.5 1"/>
+                <xacro:basic_box pos="${(base_size_x+arm_holder_size_x)/4} 0 0" rot="0 0 0" mass="0.1"
+                size_x="${(arm_holder_size_x + base_size_x)/2}" size_y="${arm_holder_size_y}" 
+                size_z="${arm_holder_size_z}" color="0 0 1 1"/>
             </link>
 
             <link name="arm">
-                <xacro:basic_cylinder pos="${arm_holder_size_x + base_size_x} 0 ${-arm_length/2}"
-                    rot="0 0 0" mass="0.1" radius="${arm_radius}"
+                <xacro:basic_cylinder pos="${arm_holder_size_x + base_size_x/2} ${arm_length/2} 0"
+                    rot="${PI/2} 0 0" mass="0.1" radius="${arm_radius}"
                     length="${arm_length}" color="1 0 0 1"/>
             </link>
 
             <link name="bob">
-                <xacro:basic_solid_sphere pos="0 ${arm_holder_size_x + base_size_x} 0" rot="0 0 0"
+                <xacro:basic_solid_sphere pos="${arm_holder_size_x + base_size_x/2} ${arm_length} 0" rot="0 0 0"
                 radius="${bob_radius}" color="0 1 0 1" mass="10"/>
             </link>
 
             <joint name="arm_joint" type="revolute">
                 <parent>arm_holder</parent>
                 <child>arm</child>
+                <pose>0 0 ${arm_length/2} 0 0 0</pose>
                 <axis>
-                    <xyz>0 1 0</xyz>
-                    <pose>0 0 0 0 0 0</pose>
+                    <xyz>1 0 0</xyz>
                     <limit>
                         <lower>-1e16</lower>
                         <upper>1e16</upper>
