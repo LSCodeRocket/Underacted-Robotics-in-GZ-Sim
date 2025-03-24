@@ -195,15 +195,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_0</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>0.4</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -213,6 +217,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_0</joint_name>
+        <log_file_name>logs/log_0.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.0</arm_length>
+        <theta_0>0.4 </theta_0>
+        <n>0</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_1">
       <pose>2 0 1.31 0 0 0</pose>
@@ -378,15 +390,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_1</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>-0.6</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -396,6 +412,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_1</joint_name>
+        <log_file_name>logs/log_1.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.0</arm_length>
+        <theta_0>-0.6 </theta_0>
+        <n>1</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_2">
       <pose>4 0 1.31 0 0 0</pose>
@@ -561,15 +585,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_2</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>0.2</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -579,6 +607,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_2</joint_name>
+        <log_file_name>logs/log_2.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.0</arm_length>
+        <theta_0>0.2 </theta_0>
+        <n>2</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_3">
       <pose>6 0 1.31 0 0 0</pose>
@@ -744,15 +780,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_3</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>2.4</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -762,6 +802,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_3</joint_name>
+        <log_file_name>logs/log_3.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.0</arm_length>
+        <theta_0>2.4 </theta_0>
+        <n>3</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_4">
       <pose>8 0 1.31 0 0 0</pose>
@@ -927,15 +975,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_4</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>-1.3</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -945,6 +997,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_4</joint_name>
+        <log_file_name>logs/log_4.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.0</arm_length>
+        <theta_0>-1.3 </theta_0>
+        <n>4</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_10">
       <pose>0 2 1.51 0 0 0</pose>
@@ -1110,15 +1170,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_10</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>0.4</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -1128,6 +1192,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_10</joint_name>
+        <log_file_name>logs/log_10.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.3</arm_length>
+        <theta_0>0.4 </theta_0>
+        <n>10</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_11">
       <pose>2 2 1.51 0 0 0</pose>
@@ -1293,15 +1365,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_11</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>-0.6</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -1311,6 +1387,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_11</joint_name>
+        <log_file_name>logs/log_11.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.3</arm_length>
+        <theta_0>-0.6 </theta_0>
+        <n>11</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_12">
       <pose>4 2 1.51 0 0 0</pose>
@@ -1476,15 +1560,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_12</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>0.2</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -1494,6 +1582,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_12</joint_name>
+        <log_file_name>logs/log_12.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.3</arm_length>
+        <theta_0>0.2 </theta_0>
+        <n>12</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_13">
       <pose>6 2 1.51 0 0 0</pose>
@@ -1659,15 +1755,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_13</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>2.4</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -1677,6 +1777,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_13</joint_name>
+        <log_file_name>logs/log_13.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.3</arm_length>
+        <theta_0>2.4 </theta_0>
+        <n>13</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_14">
       <pose>8 2 1.51 0 0 0</pose>
@@ -1842,15 +1950,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_14</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>-1.3</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -1860,6 +1972,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_14</joint_name>
+        <log_file_name>logs/log_14.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>1.3</arm_length>
+        <theta_0>-1.3 </theta_0>
+        <n>14</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_20">
       <pose>0 -2 0.76 0 0 0</pose>
@@ -2025,15 +2145,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_20</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>0.4</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -2043,6 +2167,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_20</joint_name>
+        <log_file_name>logs/log_20.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>0.6</arm_length>
+        <theta_0>0.4 </theta_0>
+        <n>20</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_21">
       <pose>2 -2 0.76 0 0 0</pose>
@@ -2208,15 +2340,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_21</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>-0.6</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -2226,6 +2362,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_21</joint_name>
+        <log_file_name>logs/log_21.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>0.6</arm_length>
+        <theta_0>-0.6 </theta_0>
+        <n>21</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_22">
       <pose>4 -2 0.76 0 0 0</pose>
@@ -2391,15 +2535,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_22</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>0.2</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -2409,6 +2557,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_22</joint_name>
+        <log_file_name>logs/log_22.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>0.6</arm_length>
+        <theta_0>0.2 </theta_0>
+        <n>22</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_23">
       <pose>6 -2 0.76 0 0 0</pose>
@@ -2574,15 +2730,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_23</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>2.4</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -2592,6 +2752,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_23</joint_name>
+        <log_file_name>logs/log_23.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>0.6</arm_length>
+        <theta_0>2.4 </theta_0>
+        <n>23</n>
+      </plugin>
     </model>
     <model name="simple_pendulum_24">
       <pose>8 -2 0.76 0 0 0</pose>
@@ -2757,15 +2925,19 @@
         <parent>arm</parent>
         <child>bob</child>
       </joint>
-      <plugin filename="libPID_Pendulum" name="simp_pend_ctrl::PID_Pendulum">
-        <joint_name>arm_joint_24</joint_name>
-        <p_gain>200.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>50.0</d_gain>
-        <target_position>3.14159</target_position>
-        <theta_0>-1.3</theta_0>
-      </plugin>
       <!--
+            <plugin filename="libPID_Pendulum"
+                name="simp_pend_ctrl::PID_Pendulum">
+                <joint_name>arm_joint_${n}</joint_name>
+
+                <p_gain>200.0</p_gain>
+                <i_gain>0.5</i_gain>
+                <d_gain>50.0</d_gain>
+
+                <target_position>${PI}</target_position>
+                <theta_0>${theta_0}</theta_0>
+            </plugin>
+
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -2775,6 +2947,14 @@
                 <n>${n}</n>
             </plugin>
             -->
+      <plugin filename="libEnergy_Shaping" name="simp_pend_ctrl::Energy_Shaping">
+        <joint_name>arm_joint_24</joint_name>
+        <log_file_name>logs/log_24.csv</log_file_name>
+        <bob_mass>5 </bob_mass>
+        <arm_length>0.6</arm_length>
+        <theta_0>-1.3 </theta_0>
+        <n>24</n>
+      </plugin>
     </model>
   </world>
 </sdf>

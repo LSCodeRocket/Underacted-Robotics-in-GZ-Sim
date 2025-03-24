@@ -11,7 +11,7 @@ gz_find_package(gz-sim8 REQUIRED)
 set(GZ_SIM_VER ${gz-sim8_VERSION_MAJOR})
 
 
-set(LIBRARIES Gravity_Invert PID_Pendulum)
+set(LIBRARIES Gravity_Invert PID_Pendulum Energy_Shaping)
 
 
 foreach(LIB IN LISTS LIBRARIES)

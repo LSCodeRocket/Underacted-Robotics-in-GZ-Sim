@@ -74,6 +74,7 @@
                 <child>bob</child>
             </joint>
 
+            <!--
             <plugin filename="libPID_Pendulum"
                 name="simp_pend_ctrl::PID_Pendulum">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -86,7 +87,6 @@
                 <theta_0>${theta_0}</theta_0>
             </plugin>
 
-            <!--
             <plugin filename="libGravity_Invert"
                 name="simp_pend_ctrl::Gravity_Invert">
                 <joint_name>arm_joint_${n}</joint_name>
@@ -96,6 +96,15 @@
                 <n>${n}</n>
             </plugin>
             -->
+            <plugin filename="libEnergy_Shaping"
+                name="simp_pend_ctrl::Energy_Shaping">
+                <joint_name>arm_joint_${n}</joint_name>
+                <log_file_name>logs/log_${n}.csv</log_file_name>
+                <bob_mass>${bob_mass} </bob_mass>
+                <arm_length>${arm_length}</arm_length>
+                <theta_0>${theta_0} </theta_0>
+                <n>${n}</n>
+            </plugin>
 
         </model>
     </xacro:macro>
