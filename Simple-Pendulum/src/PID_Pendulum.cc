@@ -7,16 +7,15 @@
 #include <gz/plugin/Register.hh>
 #include <gz/math/PID.hh>
 
+
 #include "PID_Pendulum.hh"
 
-GZ_ADD_PLUGIN(
-    simp_pend_ctrl::PID_Pendulum,
-    gz::sim::System, 
-    simp_pend_ctrl::PID_Pendulum::ISystemConfigure,
-    simp_pend_ctrl::PID_Pendulum::ISystemPreUpdate)
 
 #define STEP_TIME 0.001
 #define TARGET_ANGLE 3.14159265 // meters
+
+using namespace gz::sim;
+using namespace std;
 
 namespace simp_pend_ctrl {
     void PID_Pendulum::Configure(const Entity &_entity,
@@ -30,10 +29,15 @@ namespace simp_pend_ctrl {
             jointName = _sdf->Get<std::string>("joint_name");
         }
 
+        if (_sdf->HasElement("theta_0"))
+        {
+            this->theta_0 = _sdf->Get<double>("theta_0");
+        }
+
         this->jointEntity = _ecm.EntityByComponents(components::Name(jointName));
         if (this->jointEntity == kNullEntity)
         {
-            gzerr << "Joint [" << jointName << "] not found." << std::endl;
+            gzerr << "Joint [" << jointName << "] not found!" << std::endl;
             return;
         }
 
@@ -47,14 +51,14 @@ namespace simp_pend_ctrl {
         }
         if (_sdf->HasElement("i_gain"))
         {
-            i = _sdf->Get<double>("i_gain");
+            i = _sdf->Get<double>("i_gain") ;
         }
         if (_sdf->HasElement("d_gain"))
         {
             d = _sdf->Get<double>("d_gain");
         }
 
-        this->pid.Init(p, i, d, 0.0, 0.0, 1.0, -1.0); // PID parameters
+        this->pid.Init(p, i, d, 20.0, -20.0, 1000.0, -1000.0); // PID parameters
 
         if (_sdf->HasElement("target_position"))
         {
@@ -68,8 +72,9 @@ namespace simp_pend_ctrl {
     }
 
     
-    void PreUpdate(const UpdateInfo &_info, EntityComponentManager &_ecm)
+    void PID_Pendulum::PreUpdate(const UpdateInfo &_info, EntityComponentManager &_ecm)
     {
+        if(_info.paused) {return;}
         if (this->jointEntity == kNullEntity)
         {
             return;
@@ -80,13 +85,15 @@ namespace simp_pend_ctrl {
 
         if (!posComp)
         {
+            _ecm.CreateComponent(this->jointEntity, components::JointPosition({0}));
             gzerr << "Joint position component not found." << std::endl;
             return;
         }
 
-        double currentPosition = posComp->Data().at(0);
-        double error = this->targetPosition - currentPosition;
-        double force = this->pid.Update(error, _info.dt.seconds());
+        double currentPosition = posComp->Data().at(0) + this->theta_0;
+        double error = (this->targetPosition - currentPosition);
+        
+        double force = this->pid.Update(error, _info.dt);
 
         if (!forceComp)
         {
@@ -94,7 +101,8 @@ namespace simp_pend_ctrl {
         }
         else
         {
-            forceComp->Data()[0] = force;
+            forceComp->Data()[0] = -force;
+            std::cout<< error << std::endl;
         }
     }
 }
