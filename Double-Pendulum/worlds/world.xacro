@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<sdf version="1.7" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="double_pendulum.xacro" />
+    <xacro:include filename="ground_plane.xacro" />
+    <world name='default'>
+        <gravity> 0 0 -9.81 </gravity>
+        <xacro:ground_plane/>
+
+        <xacro:double_pendulum x="0" y="0" mass_1="10" mass_2="10" length_1="1.4" length_2="0.9" theta_1="2.2" theta_2="1.4" n="0"/>
+
+    </world>
+</sdf>

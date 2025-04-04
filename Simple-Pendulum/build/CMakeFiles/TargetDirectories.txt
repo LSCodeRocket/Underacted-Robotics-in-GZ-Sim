@@ -1,0 +1,5 @@
+/home/lsp/Documents/GitHub/Underacted-Robotics-in-GZ-Sim/Simple-Pendulum/build/CMakeFiles/Gravity_Invert.dir
+/home/lsp/Documents/GitHub/Underacted-Robotics-in-GZ-Sim/Simple-Pendulum/build/CMakeFiles/PID_Pendulum.dir
+/home/lsp/Documents/GitHub/Underacted-Robotics-in-GZ-Sim/Simple-Pendulum/build/CMakeFiles/Energy_Shaping.dir
+/home/lsp/Documents/GitHub/Underacted-Robotics-in-GZ-Sim/Simple-Pendulum/build/CMakeFiles/edit_cache.dir
+/home/lsp/Documents/GitHub/Underacted-Robotics-in-GZ-Sim/Simple-Pendulum/build/CMakeFiles/rebuild_cache.dir

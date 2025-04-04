@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<sdf version="1.7" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="basic_cylinder" params="pos rot mass radius length color">
+        <pose>${pos} ${rot}</pose>
+        <inertial>
+            <mass>${mass}</mass>
+            <inertia>
+                <ixx>${mass * (3 * radius * radius + length * length)/12}</ixx>
+                <iyy>${mass * (3 * radius * radius + length * length)/12}</iyy>
+                <izz>${mass * (radius * radius)/2}</izz>
+                <ixy>0</ixy> 
+                <ixz>0</ixz> 
+                <iyz>0</iyz>
+            </inertia>
+        </inertial>
+
+        <visual name="visual">
+            <geometry>
+                <cylinder>
+                    <radius>${radius}</radius>
+                    <length>${length}</length>
+                </cylinder>
+            </geometry>
+            
+            <material>
+                <ambient>${color}</ambient>
+                <diffuse>${color}</diffuse>
+                <specular>${color}</specular>
+                <emissive>${color}</emissive>
+            </material>
+        </visual>
+
+        <collision name="collision">
+            <geometry>
+                <cylinder>
+                    <radius>${radius}</radius>
+                    <length>${length}</length>
+                </cylinder>
+            </geometry>
+        </collision>
+    </xacro:macro>
+</sdf>

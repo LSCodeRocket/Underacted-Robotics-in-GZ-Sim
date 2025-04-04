@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<sdf version="1.7" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="PI" value="3.14159" />
+
+    <xacro:property name="stand_radius" value="0.05"/>
+    <xacro:property name="arm_radius" value="0.025"/>
+    <xacro:property name="bearing_length" value="0.5"/>
+    <xacro:property name="bob_radius" value="0.1"/>
+    <xacro:property name="bearing_radius" value="0.05"/>
+    <xacro:property name="base_thickness" value="0.04"/>
+
+    <xacro:property name="height_tolerance" value="0.3"/>
+
+    <xacro:property name="COLOR_1" value="${83/255} ${86/255} ${255/255} 1" />
+    <xacro:property name="COLOR_2" value="${55/255} ${140/255} ${231/255} 1" />
+    <xacro:property name="COLOR_3" value="${103/255} ${198/255} ${227/255} 1" />
+    <xacro:property name="COLOR_4" value="${223/255} ${245/255} ${255/255} 1" />
+
+    <xacro:include filename="basic_sphere.xacro"/>
+    <xacro:include filename="basic_box.xacro"/>
+    <xacro:include filename="basic_cylinder.xacro"/>
+
+    <xacro:macro name="double_pendulum" params="x y mass_1 mass_2 length_1 length_2 theta_1 theta_2 n">
+        <model name="double_pendulum_${n}">
+            <pose>${x} ${y} ${length_1 + length_2 + height_tolerance + base_thickness + 0.01} 0 0 0</pose>
+
+            <link name="base_link">
+                <xacro:basic_cylinder pos="0 0 -${length_1 + length_2 + + base_thickness/2 + height_tolerance}" rot="0 0 0" mass="2000"
+                radius = "1" length = "${base_thickness}" color="${COLOR_1}"/>
+            </link>
+
+            <link name="stand_1">
+                <xacro:basic_box pos="${bearing_length/2 + stand_radius} 0 -${(length_1 + length_2 + height_tolerance - bearing_radius)/2}" rot = "0 0 0" mass = "2000"
+                size_x="${2*stand_radius}" size_y="${2 * bearing_radius}" size_z="${length_1 + length_2 + height_tolerance + bearing_radius}" 
+                color = "${COLOR_2}"/>
+            </link>
+
+            <link name="stand_2">
+                <xacro:basic_box pos="-${bearing_length/2 + stand_radius} 0 -${(length_1 + length_2 + height_tolerance - bearing_radius)/2}" rot = "0 0 0" mass = "2000"
+                size_x="${2*stand_radius}" size_y="${2 * bearing_radius}" size_z="${length_1 + length_2 + height_tolerance + bearing_radius}" 
+                color = "${COLOR_2}"/>
+            </link>
+
+            <link name="arm_bearing_1_${n}">
+                <xacro:basic_cylinder pos="0 0 0" rot="0 ${PI/2} 0" mass="0.01"
+                radius = "${bearing_radius}" length = "${bearing_length}" color="${COLOR_3}"/>
+            </link>
+
+            <link name="arm_bearing_2_${n}">
+                <xacro:basic_cylinder pos="0 0 -${length_1}" rot="0 ${PI/2} 0" mass="${mass_1}"
+                radius = "${bearing_radius}" length = "${bearing_length}" color="${COLOR_3}"/>
+            </link>
+
+            <link name="bob_${n}">
+                <xacro:basic_solid_sphere pos="0 0 -${length_1 + length_2}" rot="0 0 0"
+                mass="${mass_2}" radius="${bob_radius}" color="${COLOR_3}"/>
+            </link>
+
+            <link name="arm_1_${n}">
+                <xacro:basic_cylinder pos="${bearing_length/2 - arm_radius} 0 -${length_1/2}" rot="0 0 0" mass="0.01"
+                radius = "${arm_radius}" length = "${length_1 + 2 * bearing_radius}" color="${COLOR_4}"/>
+            </link>
+
+            <link name="arm_2_${n}">
+                <xacro:basic_cylinder pos="${-bearing_length/2 + arm_radius} 0 -${length_1/2}" rot="0 0 0" mass="0.01"
+                radius = "${arm_radius}" length = "${length_1 + 2 * bearing_radius}" color="${COLOR_4}"/>
+            </link>
+
+            <link name="bob_arm_${n}">
+                <xacro:basic_cylinder pos="0 0 -${length_1 + length_2/2}" rot="0 0 0" mass="0.01"
+                radius = "${arm_radius}" length = "${length_2}" color="${COLOR_4}"/>
+            </link>
+
+
+            <joint name="base_link_stand_1_joint" type="fixed">
+                <parent>base_link</parent>
+                <child>stand_1</child> 
+            </joint>
+
+            <joint name="base_link_stand_2_joint" type="fixed">
+                <parent>base_link</parent>
+                <child>stand_2</child> 
+            </joint>
+
+            <joint name="stand_arm_bearing_1_joint" type="fixed">
+                <parent>stand_1</parent>
+                <child>arm_bearing_1_${n}</child>
+            </joint>
+
+            <joint name="bearing_2_arm_1_joint" type="fixed">
+                <parent>arm_1_${n}</parent>
+                <child>arm_bearing_2_${n}</child> 
+            </joint>
+
+            <joint name="bearing_2_arm_2_joint" type="fixed">
+                <parent>arm_bearing_2_${n}</parent>
+                <child>arm_2_${n}</child> 
+            </joint>
+
+            <joint name="bob_arm_bob_joint" type="fixed">
+                <parent>bob_arm_${n}</parent>
+                <child>bob_${n}</child> 
+            </joint>
+
+            <joint name="revolute_1_${n}" type="revolute">
+                <parent>arm_bearing_1_${n}</parent>
+                <child>arm_1_${n}</child>
+                <pose>0 0 ${length_1/2} 0 0 0</pose>
+                <axis>
+                    <xyz> 1 0 0 </xyz>
+                    <limit/>
+                    <dynamics>
+                        <damping>10</damping>
+                        <friction>5</friction>
+                    </dynamics>
+                </axis>
+            </joint>
+
+            <joint name="revolute_2_${n}" type="revolute">
+                <parent>arm_bearing_2_${n}</parent>
+                <child>bob_arm_${n}</child> 
+                <pose>0 0 ${length_2/2} 0 -${PI} 0</pose>
+                <axis>
+                    <xyz> 1 0 0 </xyz>
+                    <limit/>
+                    <dynamics>
+                        <damping>10</damping>
+                        <friction>5</friction>
+                    </dynamics>
+                </axis>
+            </joint>
+        
+            <plugin filename='libPIDController'
+                name = "dbl_pend_ctrl::PIDController">
+                <joint_1_name>revolute_1_${n}</joint_1_name>
+                <joint_2_name>revolute_2_${n}</joint_2_name>
+
+                <P_gain_1>500</P_gain_1>
+                <I_gain_1>10</I_gain_1>
+                <D_gain_1>100</D_gain_1>
+
+                <P_gain_2>100</P_gain_2>
+                <I_gain_2>20</I_gain_2>
+                <D_gain_2>30</D_gain_2>
+
+                <theta_1_0>${theta_1}</theta_1_0>
+                <theta_2_0>${theta_2}</theta_2_0>
+            </plugin>
+
+            <!--
+            <plugin filename='libFeedbackCancellation'
+                name = "dbl_pend_ctrl::FeedbackCancellation">
+                <joint_1_name>revolute_1_${n}</joint_1_name>
+                <joint_2_name>revolute_2_${n}</joint_2_name>
+
+                <mass_1>${mass_1}</mass_1>
+                <mass_2>${mass_2}</mass_2>
+
+                <length_1>${length_1}</length_1>
+                <length_2>${length_2}</length_2>
+
+                <theta_1_0>${theta_1}</theta_1_0>
+                <theta_2_0>${theta_2}</theta_2_0>
+            </plugin>
+            -->
+
+        </model>
+    </xacro:macro>
+</sdf>

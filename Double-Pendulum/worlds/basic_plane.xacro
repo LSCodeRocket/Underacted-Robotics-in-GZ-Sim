@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<sdf version="1.7" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="basic_box" params="pos rot mass size color">
+        <pose>${pos} ${rot}</pose>
+
+        <visual name="visual">
+            <geometry>
+                <plane>
+                    <size>${size}</size>
+                </plane>
+            </geometry>
+            
+            <material>
+                <ambient>${color}</ambient>
+                <diffuse>${color}</diffuse>
+                <specular>${color}</specular>
+                <emissive>${color}</emissive>
+            </material>
+        </visual>
+
+        <collision name="collision">
+            <geometry>
+                <plane>
+                    <size>${size}</size>
+                </plane>
+            </geometry>
+        </collision>
+    </xacro:macro>
+</sdf>
